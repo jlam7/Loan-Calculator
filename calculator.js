@@ -45,7 +45,7 @@ function setupIntialValues() {
 // Update the monthly payment
 function update() {
 	let values = getCurrentUIValues();
-	let payment = calculateMonthlyPayment(values);
+	let payment = '$' + calculateMonthlyPayment(values);
 	updateMonthly(payment);
 }
 
@@ -66,9 +66,9 @@ function calculateMonthlyPayment(values) {
 	i = convert.monthlyRate(values.rate);
 	topOperation = convert.topOperation(p, i);
 	bottomOperation = convert.bottomOperation(i, n);
-	payment = '$' + Math.floor(topOperation / bottomOperation * 100) / 100;
+	payment = Math.round(topOperation / bottomOperation * 100) / 100;
 
-	return payment;
+	return payment.toString();
 }
 
 // Given a string representing the monthly payment value,
